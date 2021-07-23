@@ -1,0 +1,26 @@
+<h1>New Article</h1>
+
+
+<%= form_for :article, url: articles_path  do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+    <p> <%= message %> </p>
+    <% end %>
+  </p>
+ 
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+    <% @article.errors.full_messages_for(:text).each do |message| %>
+    <p> <%= message %> </p>
+    <% end %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<p> <%= link_to "Home", root_path  %> </p>
