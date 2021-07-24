@@ -1,0 +1,27 @@
+
+<%= form_with model: article do |f| %>
+  <div>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
+    <div style="color:red; padding:5px" > <%= message %> </div>
+    <% end %>
+  </div>
+ 
+  <div>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+    <% article.errors.full_messages_for(:text).each do |message| %>
+    <div style="color:red; padding:5px"> <%= message %> </div>
+    <% end %>
+  </div>
+ <div>
+  <%= f.label :status %><br>
+  <%= f.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+</div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+<br>
+<div> <%= link_to "Home", root_path  %> </div>

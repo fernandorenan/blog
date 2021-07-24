@@ -1,6 +1,32 @@
 <h1> <%= @article.title %> </h1>
 
 <div> <%= @article.text %> </div>
+<br>
+<div>
+<%= link_to "Edit", edit_article_path(@article) %>
+<%= link_to "Delete", article_path(@article),
+                method: :delete,
+                data: {confirm: "Are you sure?"}%>
+</div>
 
 <br>
+
+<div>
+<h2>Comments</h2>  
+ We have <%= Comment.public_count_comment %> 
+
+<%= render @article.comments %>
+
+</div>
+
+<br>
+<div>
+<h2>Add a comment:</h2>   
+
+<%= render 'comments/form' %>
+</div>
+
+
+<br>
+
 <div> <%= link_to "Home", root_path  %> </div>
