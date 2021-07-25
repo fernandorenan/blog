@@ -23,7 +23,8 @@ module Visible
         end 
 
         def public_count_comment
-
+            
+            
             countStatus =  where(status: 'public').count
 
             if  countStatus > 1

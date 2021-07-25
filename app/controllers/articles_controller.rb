@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-    http_basic_authenticate_with name:"Fernand", password: "hardpassword1", except:[:index, :show]
+    http_basic_authenticate_with name:"1", password: "1", except:[:index, :show]
 
     def index
         @articles = Article.all
@@ -8,6 +8,17 @@ class ArticlesController < ApplicationController
 
     def show
         @article =  Article.find(params[:id])
+      
+        countStatus =  @article.comments.count
+
+      if  countStatus > 1 and @article.status == 'public'
+        @comentario = "#{@article.comments.count} #{'commentarys'}"  
+      elsif
+          countStatus == 1
+          @comentario = "#{@article.comments.count} #{'commentary'}" 
+      else    
+        @comentario = "#{'no commentary.'}"  
+      end 
     end
 
     def new
@@ -50,5 +61,4 @@ class ArticlesController < ApplicationController
         params.require(:article).permit(:title, :text, :status)
       end
       
-
 end

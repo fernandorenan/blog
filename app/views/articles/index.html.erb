@@ -1,15 +1,19 @@
-<h1>Articles</h1>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Articles</span>
+  </div>
+</nav>
+<div class='mt-2 container-fluid'>
+<p>Our blog has  <%= Article.public_count %> </p>
+ 
+<div class='row'>
 
-Our blog has  <%= Article.public_count %> 
-
-
-
-<div>
-<ul>
+<div class='col-12 mb-4  '>
+<ul class=' border  border-2 rounded-pill  list-group list-group-flush' >
 <% @articles.each do |article| %>
   <% unless article.archived? %>
 
-<li>
+<li class='list-group-item p-4 pt-3 pb-3'>
 <%= link_to article.title, article %>
 </li>
 <% end %>
@@ -17,5 +21,11 @@ Our blog has  <%= Article.public_count %>
 </ul>
 </div>
 
-<br>
-<div><%= link_to "New Article", new_article_path %> </div>
+ 
+
+<div class=''><%= link_to "New Article", new_article_path, :class => "btn btn-primary" %></div>
+
+</div>
+ 
+</div>
+ 

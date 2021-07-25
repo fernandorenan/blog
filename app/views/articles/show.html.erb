@@ -1,7 +1,12 @@
-<h1> <%= @article.title %> </h1>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1"><%= @article.title %></span>
+  </div>
+</nav>
+<div class='mt-2 mb-2 container-fluid'>
 
-<div> <%= @article.text %> </div>
-<br>
+<div class='col-8 m-2' >
+<div  class='card mb-2 p-3 ' style="min-height: 8rem;"> <%= @article.text %> </div>
 <div>
 <%= link_to "Edit", edit_article_path(@article) %>
 <%= link_to "Delete", article_path(@article),
@@ -9,24 +14,19 @@
                 data: {confirm: "Are you sure?"}%>
 </div>
 
-<br>
 
 <div>
-<h2>Comments</h2>  
- We have <%= Comment.public_count_comment %> 
-
+<h4>Comments</h4>  
+ We have <%=  @comentario  %> 
 <%= render @article.comments %>
-
 </div>
 
-<br>
 <div>
 <h2>Add a comment:</h2>   
 
 <%= render 'comments/form' %>
 </div>
 
-
-<br>
-
 <div> <%= link_to "Home", root_path  %> </div>
+
+</div></div>
